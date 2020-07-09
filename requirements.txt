@@ -1,0 +1,10 @@
+certifi==2020.6.20
+DateTime==4.3
+imutils==0.5.3
+numpy @ file:///D:/bld/numpy_1591485433275/work
+playsound==1.2.2
+pytz==2020.1
+scipy==1.5.1
+wincertstore==0.2
+zope.interface==5.1.0
+dlib==19.20.0
