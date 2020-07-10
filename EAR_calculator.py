@@ -10,3 +10,11 @@ def eye_aspect_ratio(eye):
 	# The EAR Equation 
 	EAR = (A + B) / (2.0 * C)
 	return EAR
+
+def mouth_aspect_ratio(mouth): 
+	A = dist.euclidean(mouth[13], mouth[19])
+	B = dist.euclidean(mouth[14], mouth[18])
+	C = dist.euclidean(mouth[15], mouth[17])
+
+	MAR = (A + B + C) / 3.0
+	return MAR

@@ -8,6 +8,7 @@ import time
 import argparse 
 import cv2 
 from playsound import playsound
+from scipy.spatial import distance as dist
 
 # Construct the argument parser and parse the arguments 
 ap = argparse.ArgumentParser() 
@@ -32,6 +33,7 @@ predictor = dlib.shape_predictor(args["shape_predictor"])
 # Grab the indexes of the facial landamarks for the left and right eye respectively 
 (lstart, lend) = face_utils.FACIAL_LANDMARKS_IDXS["left_eye"]
 (rstart, rend) = face_utils.FACIAL_LANDMARKS_IDXS["right_eye"]
+(mstart, mend) = face_utils.FACIAL_LANDMARKS_IDXS["mouth"]
 
 # Now start the video stream and allow the camera to warm-up
 print("[INFO]Loading Camera.....")
@@ -63,6 +65,7 @@ while True:
 
 		leftEye = shape[lstart:lend]
 		rightEye = shape[rstart:rend] 
+		mouth = shape[mstart:mend]
 		# Compute the EAR for both the eyes 
 		leftEAR = eye_aspect_ratio(leftEye)
 		rightEAR = eye_aspect_ratio(rightEye)
@@ -76,6 +79,9 @@ while True:
 		# Draw the contours 
 		cv2.drawContours(frame, [leftEyeHull], -1, (0, 255, 0), 1)
 		cv2.drawContours(frame, [rightEyeHull], -1, (0, 255, 0), 1)
+		cv2.drawContours(frame, [mouth], -1, (0, 255, 0), 1)
+
+		MAR = mouth_aspect_ratio(mouth)
 
 		# Check if EAR < EAR_THRESHOLD, if so then it indicates that a blink is taking place 
 		# Thus, count the number of frames for which the eye remains closed 
@@ -91,6 +97,12 @@ while True:
 			FRAME_COUNT = 0
 		cv2.putText(frame, "EAR: {:.2f}".format(EAR), (300, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
+		if MAR > 12: 
+			if FRAME_COUNT >= 3: 
+				playsound('alarm.mp3')
+				cv2.putText(frame, "DROWSINESS ALERT!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+				playsound('warning_yawn.mp3')
+			
 	#Display the frame 
 	cv2.imshow("Output", frame)
 	key = cv2.waitKey(1) & 0xFF 
