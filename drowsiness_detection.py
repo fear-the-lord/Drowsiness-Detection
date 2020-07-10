@@ -20,6 +20,8 @@ args = vars(ap.parse_args())
 EAR_THRESHOLD = 0.3
 # Declare another costant to hold the consecutive number of frames to consider for a blink 
 CONSECUTIVE_FRAMES = 20 
+# Another constant which will work as a threshold for MAR value
+MAR_THRESHOLD = 14
 
 # Initialize two counters 
 BLINK_COUNT = 0 
@@ -61,7 +63,7 @@ while True:
 		(x, y, w, h) = face_utils.rect_to_bb(rect) 
 		cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 255, 0), 2)	
 		# Put a number 
-		cv2.putText(frame, "Face #{}".format(i + 1), (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
+		cv2.putText(frame, "Driver", (x - 10, y - 10), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 255, 0), 2)
 
 		leftEye = shape[lstart:lend]
 		rightEye = shape[rstart:rend] 
@@ -88,20 +90,24 @@ while True:
 		if EAR < EAR_THRESHOLD: 
 			FRAME_COUNT += 1
 
+			cv2.drawContours(frame, [leftEyeHull], -1, (0, 0, 255), 1)
+			cv2.drawContours(frame, [rightEyeHull], -1, (0, 0, 255), 1)
+
 			if FRAME_COUNT >= CONSECUTIVE_FRAMES: 
-				playsound('alarm.mp3')
+				playsound('sound files/alarm.mp3')
 				cv2.putText(frame, "DROWSINESS ALERT!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 		else: 
 			if FRAME_COUNT >= CONSECUTIVE_FRAMES: 
-				playsound('warning.mp3')
+				playsound('sound files/warning.mp3')
 			FRAME_COUNT = 0
 		cv2.putText(frame, "EAR: {:.2f}".format(EAR), (300, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
-		if MAR > 12: 
-			if FRAME_COUNT >= 3: 
-				playsound('alarm.mp3')
-				cv2.putText(frame, "DROWSINESS ALERT!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
-				playsound('warning_yawn.mp3')
+		# Check if the person is yawning
+		if MAR > MAR_THRESHOLD:
+			cv2.drawContours(frame, [mouth], -1, (0, 0, 255), 1) 
+			cv2.putText(frame, "DROWSINESS ALERT!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+			playsound('sound files/alarm.mp3')
+			playsound('sound files/warning_yawn.mp3')
 			
 	#Display the frame 
 	cv2.imshow("Output", frame)
