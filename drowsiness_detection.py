@@ -45,7 +45,8 @@ time.sleep(2)
 # Now, loop over all the frames and detect the faces
 while True: 
 	# Extract a frame 
-	frame = vs.read() 
+	frame = vs.read()
+	cv2.putText(frame, "PRESS 'q' TO EXIT", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 3) 
 	# Resize the frame 
 	frame = imutils.resize(frame, width = 500)
 	# Convert the frame to grayscale 
@@ -95,17 +96,17 @@ while True:
 
 			if FRAME_COUNT >= CONSECUTIVE_FRAMES: 
 				playsound('sound files/alarm.mp3')
-				cv2.putText(frame, "DROWSINESS ALERT!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+				cv2.putText(frame, "DROWSINESS ALERT!", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 		else: 
 			if FRAME_COUNT >= CONSECUTIVE_FRAMES: 
 				playsound('sound files/warning.mp3')
 			FRAME_COUNT = 0
-		cv2.putText(frame, "EAR: {:.2f}".format(EAR), (300, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+		#cv2.putText(frame, "EAR: {:.2f}".format(EAR), (300, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 
 		# Check if the person is yawning
 		if MAR > MAR_THRESHOLD:
 			cv2.drawContours(frame, [mouth], -1, (0, 0, 255), 1) 
-			cv2.putText(frame, "DROWSINESS ALERT!", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+			cv2.putText(frame, "DROWSINESS ALERT!", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 			playsound('sound files/alarm.mp3')
 			playsound('sound files/warning_yawn.mp3')
 			
