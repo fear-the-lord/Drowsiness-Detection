@@ -1,0 +1,122 @@
+body {
+  background-color: rgb(19, 29, 41);
+  text-align: center;
+  color: rgb(204, 218, 235);
+}
+.div-head{
+margin: 50px;
+}
+
+hr{
+	background-color: rgb(204, 218, 235);
+}
+
+.jumb-width{
+	
+	position: center;
+	background-color: rgb(19, 29, 41); 
+}
+.footer {
+    
+    bottom: 0;
+    width: 100%;
+    height: 60px;
+    line-height: 60px;
+    background-color: rgb(19, 29, 41);
+}
+a{
+	color: rgb(204, 218, 235)
+}
+.fa {
+  padding: 10px;
+  font-size: 15px;
+  width: 30px;
+  text-align: center;
+  text-decoration: none;
+  margin: 2px 1px;
+  border-radius: 50%;
+}
+.fa:hover {
+    opacity: 0.7;
+}
+.fa-linkedin {
+  background: rgb(204, 218, 235);
+  color: white;
+}
+.card-style{
+	background-color: rgb(19, 29, 41);
+}
+img{
+height: 150px;
+width: 150px;
+vertical-align: middle;
+border-radius: 50%;
+
+}
+
+.template-demo>.btn {
+     margin-right: 0.5rem !important
+ }
+
+ .template-demo {
+     margin-top: 0.5rem !important
+ }
+ .btn.btn-rounded {
+     border-radius: 50px
+ }
+
+ .btn-outline-linkedin {
+     border: 1px solid #0177b5;
+     color: #0177b5
+ }
+
+ .btn-outline-instagram {
+     border: 1px solid rgb(252, 186, 3);
+     color: #dc4a38
+ }
+.btn-outline-google {
+     border: 1px solid #dc4a38;
+     color: #dc4a38
+ }
+.btn-outline-github {
+     border: 1px solid #f8f9fa;
+     color: rgb(89, 88, 85)
+ }
+ .btn-outline-linkedin:hover {
+     background: white;
+     color: white;
+ }
+
+ .btn-outline-github:hover {
+     background: rgb(0,0,0);
+     color: #ffffff
+ }
+
+ .btn-outline-google:hover {
+     background: #e52d27;
+     color: #ffffff
+ }
+
+
+ .btn-outline-instagram:hover {
+     background: rgb(252, 65, 3);
+     color: #ffffff
+ }
+.linkedin-bg{
+	background:none;
+	color: rgb(3, 107, 252);
+}
+.github-bg{
+	background: none;
+	color: #f8f9fa;
+}
+.insta-bg{
+	background: none;
+	color:white;
+}
+
+.card-text {
+  font-family: Helvetica;
+  font-stretch: extra-expanded;
+  font-weight: 700;
+}
