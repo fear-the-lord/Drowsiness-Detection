@@ -1,15 +1,16 @@
 certifi==2020.6.20
-cycler==0.10.0
+click==7.1.2
 DateTime==4.3
+Flask==1.1.2
+gunicorn==20.0.4
 imutils==0.5.3
-kiwisolver==1.2.0
-matplotlib==3.2.2
-numpy @ file:///D:/bld/numpy_1591485433275/work
+itsdangerous==1.1.0
+Jinja2==2.11.2
+MarkupSafe==1.1.1
+numpy==1.18.5
 playsound==1.2.2
-pyparsing==2.4.7
-python-dateutil==2.8.1
 pytz==2020.1
 scipy==1.5.1
-six==1.15.0
+Werkzeug==1.0.1
 wincertstore==0.2
 zope.interface==5.1.0
