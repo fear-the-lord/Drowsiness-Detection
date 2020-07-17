@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Drowsiness Detection System</title>
+	<link rel = "icon" href = "../static/assets/logo.png" type = "image/x-icon"> 
+	<meta charset="UTF-8">
+  	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		body, html{
+		  height:100%;
+		  margin:0;
+		  font-size:16px;
+		  font-family:"Lato", sans-serif;
+		  font-weight:400;
+		  line-height:1.8em;
+		  color:#666;
+		}
+
+		.pimg1{
+		  position:relative;
+		  opacity:1;
+		  background-position:center;
+		  background-size:cover;
+		  background-repeat:no-repeat;
+
+		  /*
+		    fixed = parallax
+		    scroll = normal
+		  */
+		  background-attachment:fixed;
+		}
+
+		.pimg1{
+		  background:linear-gradient(rgba(255,255,255,.5), rgba(255,255,255,.5)),url("../static/assets/shibua_gif.gif");
+		  background-repeat: no-repeat;
+		  min-height:100%;
+		  background-size: cover; 
+		}
+
+		
+
+		.section{
+		  text-align:center;
+		  padding:50px 80px;
+		}
+
+		.section-light{
+		  background-color:#f4f4f4;
+		  color:#666;
+		}
+
+		.section-dark{
+		  background-image: linear-gradient(120deg,rgb(19, 29, 41),rgb(37, 95, 110));
+		  color:#ddd;
+		}
+
+		.ptext{
+		  position:absolute;
+		  top:50%;
+		  width:100%;
+		  text-align:justify-all;
+		  color:#000;
+		  font-size:25px;
+		  letter-spacing:6px;
+		  text-transform:uppercase;
+		  justify-content: center;
+		  align-items: center;
+		  flex-wrap: wrap;
+		  padding-left: 250px;
+		}
+
+		.ptext .border{
+		  background-color:#111;
+		  color:#fff;
+		  padding:20px;
+		}
+
+		.ptext .border.trans{
+		  background-color:transparent;
+		}
+
+		@media(max-width:568px){
+		  .pimg1, .pimg2, .pimg3{
+		    background-attachment:scroll;
+		  }
+		}
+		.l-div{
+			width:280px;
+			height: 250px;
+			background-color: none;
+			/*position: relative;*/
+			animation: movingl 3s;
+		}
+		.r-div{
+			width:310px;
+			height: 250px;
+			background-color: none;
+			position: relative;
+			animation: movingr 3s;
+		}
+		#div1{animation-timing-function: linear;}
+		#div2{animation-timing-function: linear;}
+		#div3{animation-timing-function: linear;}
+		@keyframes movingl
+		{
+			from{left:-500px;}
+			to{left:-250px;}
+		}	
+		@keyframes movingr
+		{
+			from{left:500px;}
+			to{left:-100px;}
+		}
+		* {
+		  margin: 0;
+		  padding: 0;
+		  box-sizing: border-box;
+		}		
+		a {
+		  position: relative;
+		  padding: 10px 40px;
+		  display: block;
+		  text-decoration: none;
+		  text-transform: uppercase;
+		  width: 200px;
+		  overflow: hidden;
+		  border-radius: 40px;
+		}
+
+		a span {
+		  position: relative;
+		  color: #fff;
+		  font-size: 20px;
+		  font-family: Arial;
+		  letter-spacing: 5px;
+		  z-index: 1;
+		}
+
+		a .liquid {
+		  position: absolute;
+		  top: -80px;
+		  left: 0;
+		  width: 200px;
+		  height: 200px;
+		  background: rgb(115, 177, 240);
+		  box-shadow: inset 0 0 50px rgba(0, 0, 0, .5);
+		  transition: .5s;
+		}
+
+		a .liquid::after,
+		a .liquid::before {
+		  content: '';
+		  width: 200%;
+		  height: 200%;
+		  position: absolute;
+		  top: 0;
+		  left: 50%;
+		  transform: translate(-50%, -75%);
+		  background: #000;
+		}
+
+		a .liquid::before {
+		  
+		  border-radius: 45%;
+		  background: rgba(31, 44, 84, 1);
+		  animation: animate 5s linear infinite;
+		}
+
+		a .liquid::after {
+		  
+		  border-radius: 40%;
+		  background: rgba(31, 44, 84, .5);
+		  animation: animate 10s linear infinite;
+		}
+
+		a:hover .liquid{
+		  top: -120px;
+		}
+
+		@keyframes animate {
+		  0% {
+		    transform: translate(-50%, -75%) rotate(0deg);
+		  }
+		  100% {
+		    transform: translate(-50%, -75%) rotate(360deg);
+		  }
+		}
+			.container1 {
+			 position: absolute;
+			 -webkit-transform: translate(-50%, -50%);
+			 -ms-transform: translate(-50%, -50%);
+			 transform: translate(-50%, -50%);
+			 left: 50%;
+			 top: 50%;
+			 font-family: 'Raleway', sans-serif;
+		}
+		 .title {
+			 font-weight: 800;
+			 color: transparent;
+			 font-size: 55px;
+			 background: url("../static/assets/shibua_gif.gif") repeat;
+			 background-position: 40% 50%;
+			 -webkit-background-clip: text;
+			 position: relative;
+			 text-align: center;
+			 line-height: 90px;
+			 letter-spacing: 0.5px;
+		}
+		 .subtitle {
+			 display: block;
+			 text-align: center;
+			 text-transform: uppercase;
+			 padding-top: 10px;
+			 color:rgba(28, 54, 79,.9);
+		}
+
+		/* ================ The Timeline ================ */
+
+		.timeline {
+		  position: relative;
+		  width: 660px;
+		  margin: 0 auto;
+		  margin-top: 20px;
+		  padding: 1em 0;
+		  list-style-type: none;
+		}
+
+		/*.timeline:before {
+		  position: absolute;
+		  left: 50%;
+		  top: 0;
+		  content: ' ';
+		  display: block;
+		  width: 6px;
+		  height: 100%;
+		  margin-left: -3px;
+		  background: rgb(80,80,80);
+		  background: -moz-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+		  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(30,87,153,1)), color-stop(100%,rgba(125,185,232,1)));
+		  background: -webkit-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+		  background: -o-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+		  background: -ms-linear-gradient(top, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+		  background: linear-gradient(to bottom, rgba(80,80,80,0) 0%, rgb(80,80,80) 8%, rgb(80,80,80) 92%, rgba(80,80,80,0) 100%);
+		  
+		  z-index: 5;
+		}*/
+
+		.timeline li {
+		  padding: 1em 0;
+		}
+
+		.timeline li:after {
+		  content: "";
+		  display: block;
+		  height: 0;
+		  clear: both;
+		  visibility: hidden;
+		}
+
+		.direction-l {
+		  position: relative;
+		  width: 300px;
+		  float: left;
+		  text-align: right;
+		}
+
+		.direction-r {
+		  position: relative;
+		  width: 300px;
+		  float: right;
+		}
+
+		.flag-wrapper {
+		  position: relative;
+		  display: inline-block;
+		  
+		  text-align: center;
+		}
+
+		.flag {
+		  position: relative;
+		  display: inline;
+		  background: rgb(248,248,248);
+		  padding: 6px 10px;
+		  border-radius: 5px;
+		  color: rgb(30, 67, 97);
+		  font-weight: 600;
+		  text-align: left;
+		}
+
+		.direction-l .flag {
+		  -webkit-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+		  -moz-box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+		  box-shadow: -1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+		}
+
+		.direction-r .flag {
+		  -webkit-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+		  -moz-box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+		  box-shadow: 1px 1px 1px rgba(0,0,0,0.15), 0 0 1px rgba(0,0,0,0.15);
+		}
+
+		.direction-l .flag:before,
+		.direction-r .flag:before {
+		  position: absolute;
+		  top: 50%;
+		  right: -40px;
+		  content: ' ';
+		  display: block;
+		  width: 12px;
+		  height: 12px;
+		  margin-top: -10px;
+		  background: #fff;
+		  border-radius: 10px;
+		  border: 4px solid rgb(255,80,80);
+		  z-index: 10;
+		}
+
+		.direction-r .flag:before {
+		  left: -40px;
+		}
+
+		.direction-l .flag:after {
+		  content: "";
+		  position: absolute;
+		  left: 100%;
+		  top: 50%;
+		  height: 0;
+		  width: 0;
+		  margin-top: -8px;
+		  border: solid transparent;
+		  border-left-color: rgb(248,248,248);
+		  border-width: 8px;
+		  pointer-events: none;
+		}
+
+		.direction-r .flag:after {
+		  content: "";
+		  position: absolute;
+		  right: 100%;
+		  top: 50%;
+		  height: 0;
+		  width: 0;
+		  margin-top: -8px;
+		  border: solid transparent;
+		  border-right-color: rgb(248,248,248);
+		  border-width: 8px;
+		  pointer-events: none;
+		}
+
+		.time-wrapper {
+		  display: inline;
+		  
+		  line-height: 1em;
+		  font-size: 0.66666em;
+		  color: rgb(250,80,80);
+		  vertical-align: middle;
+		}
+
+		.direction-l .time-wrapper {
+		  float: left;
+		}
+
+		.direction-r .time-wrapper {
+		  float: right;
+		}
+
+		.time {
+		  display: inline-block;
+		  padding: 4px 6px;
+		  background: rgb(248,248,248);
+		}
+
+		.desc {
+		  margin: 1em 0.75em 0 0;
+		  
+		  font-size: 0.77777em;
+		  font-style: italic;
+		  line-height: 1.5em;
+		  color: rgb(204, 218, 235);
+		}
+
+		.direction-r .desc {
+		  margin: 1em 0 0 0.75em;
+		}
+
+		/* ================ Timeline Media Queries ================ */
+
+		@media screen and (max-width: 660px) {
+
+		.timeline {
+		    width: 100%;
+		    padding: 4em 0 1em 0;
+		}
+
+		.timeline li {
+		    padding: 2em 0;
+		}
+
+		.direction-l,
+		.direction-r {
+		    float: none;
+		    width: 100%;
+
+		    text-align: center;
+		}
+
+		.flag-wrapper {
+		    text-align: center;
+		}
+
+		.flag {
+		    background: rgb(255,255,255);
+		    color: rgb(19, 29, 41);
+		    z-index: 15;
+		}
+
+		.direction-l .flag:before,
+		.direction-r .flag:before {
+		  position: absolute;
+		  top: -30px;
+		    left: 50%;
+		    content: ' ';
+		    display: block;
+		    width: 12px;
+		    height: 12px;
+		    margin-left: -9px;
+		    background: #fff;
+		    border-radius: 10px;
+		    color: rgb(19, 29, 41);
+		    border: 4px solid rgb(255,80,80);
+		    z-index: 10;
+		}
+
+		.direction-l .flag:after,
+		.direction-r .flag:after {
+		    content: "";
+		    position: absolute;
+		    left: 50%;
+		    top: -8px;
+		    height: 0;
+		    width: 0;
+		    margin-left: -8px;
+		    border: solid transparent;
+		    border-bottom-color: rgb(255,255,255);
+		    color: rgb(19, 29, 41);
+		    border-width: 8px;
+		    pointer-events: none;
+		}
+
+		.time-wrapper {
+		    display: block;
+		    position: relative;
+		    margin: 4px 0 0 0;
+		    z-index: 14;
+		}
+
+		.direction-l .time-wrapper {
+		    float: none;
+		}
+
+		.direction-r .time-wrapper {
+		    float: none;
+		}
+
+		.desc {
+
+		    position: relative;
+		    margin: 1em 0 0 0;
+		    padding: 1em;
+		    background: none;
+		    -webkit-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+		    -moz-box-shadow: 0 0 1px rgba(0,0,0,0.20);
+		    box-shadow: 0 0 1px rgba(0,0,0,0.20);
+		    
+		  z-index: 15;
+		}
+
+		.direction-l .desc,
+		.direction-r .desc {
+		    position: relative;
+		    margin: 1em 1em 0 1em;
+		    padding: 1em;
+		    z-index: 15;
+		}
+
+		}
+
+		@media screen and (min-width: 400px ?? max-width: 660px) {
+
+		.direction-l .desc,
+		.direction-r .desc {
+		    margin: 1em 4em 0 4em;
+		}
+
+		}
+		/* stat alert*/
+		.text-effect {
+		  position: relative;
+		   
+		  /* The blend modes mute the colors, so let's bump them up*/
+		  filter: contrast(110%) brightness(190%);
+		}
+
+		.neon {
+		  position: relative;
+		  text-shadow: 0 0 2rem rgba(red, 0.2);
+
+		  &::before,
+		  &::after {
+		    /*Add two copies of the text on their own layer*/
+		    content: attr(data-text);
+		    
+		    color: red;
+		    
+		    /*And blur them to create the neon effect with the blend-mode below*/
+		    filter: blur(0.01em);
+		    
+		    position: absolute;
+		    top: 0; left: 0;
+		    pointer-events: none;
+		  }
+		  
+		  /* Set the top copy to difference. This creates the knock-out effect with a bit of glow*/
+		  &::after {
+		    mix-blend-mode: difference;
+		  }
+		}
+
+		/*=== Pen styling, ignore*/
+
+		.text-effect { 
+		  flex: 0 1 0;
+		  text-align: center;
+		}
+
+		/* Style text*/
+		.neon {
+		  display: inline-block;
+		  font: 300 50px/1 serif;
+		  text-transform: uppercase;
+		  margin: 0;
+		  
+		  &:focus { outline: none; border: 1px dotted white; }
+		}
+		.text-style{
+		transition: 4s ease-in-out;
+		letter-spacing: 6px;
+		}
+	</style>	
+	
+</head>
+<body>
+	<div class="pimg1">
+        <div class="container1">
+  			<div class="title">DROWSINESS DETECTION SYSTEM</div>
+  			<div class="subtitle"> The best drivers are aware that they must be beware. </div>
+		</div>
+  </div>
+
+  <section class="section section-dark">
+    <div class="text-effect">
+  		<h1 class = "neon text-style">STAT ALERT!!</h1><br> 
+	</div>
+    <ul class="timeline">
+    		<!-- Item 1 -->
+				<li>
+					<div id="div1" class="direction-r r-div">
+						<div class="flag-wrapper">
+							<span class="flag">4,12,000</span>
+							
+						</div>
+						<div class="desc">In 2018, the number of accidental fatalities across India amounted to around <b>412 thousand</b>. The rate of accidental deaths in 2018 was about 2.6 percent higher than the previous year. Road accidents had the highest number of fatalities followed by railway incidents.</div>
+					</div>
+				</li>
+			  
+				<!-- Item 2 -->
+				<li>
+					<div id="div2" class="direction-l l-div">
+						<div class="flag-wrapper">
+							<span class="flag">70</span>
+						</div>
+						<div class="desc">In 2018, the number of females aged between 25 and 35 years being killed in road accidents amounted to around five thousand across India. Each year, about three to five percent of the GDP of the country was invested in road accidents. About <b>70 percent</b> of accidents involved young Indians. The country has about one percent of the global vehicle population but it accounted for six percent of the world's road traffic accidents.</div>
+					</div>
+				</li>
+
+				<!-- Item 3 -->
+				<li>
+					<div id="div3" class="direction-r r-div">
+						<div class="flag-wrapper">
+							<span class="flag">35,000</span>	
+						</div>
+						<div class="desc">In 2018, the number of male victims in road accidents wherein the age of the victim was between 25 to 35 years amounted to around <b>35 thousand</b> across India. Each year, about three to five percent of the GDP of the country was invested in road accidents. About 70 percent of accidents involved young Indians.</div>
+					</div>
+				</li>
+
+				<!-- Item 4 -->
+				<li>
+					<div id="div1" class="direction-l l-div">
+						<div class="flag-wrapper">
+							<span class="flag">16.7</span>
+						</div>
+						<div class="desc">Maharashtra, an Indian state with a population share of over nine percent, had the highest share of about <b>16.7 percent</b> of total accidental deaths in India during 2018. Meanwhile, Uttar Pradesh with the largest population share, accounted for only about nine percent of the accidental deaths in the country. Majority of accidental casualties reported were between ages 30 and 45 years.</div>
+					</div>
+				</li>
+			  
+				<!-- Item 5 -->
+				<li>
+					<div id="div2" class="direction-r r-div">
+						<div class="flag-wrapper">
+							<span class="flag">17</span>	
+						</div>
+						<div class="desc">Roughly around <b>17</b> accident-related deaths occur across India every hour. Fewer cops and empty roads at night, and sometimes even during the day seem to enable motorists to do away with the traffic rules. However, efforts were made to reduce these discrepancies. The police had equipped themselves with night vision speed guns to identify the culprits. Over speeding fine was increased in the amendment of the Motor Vehicles Act as well.</div>
+					</div>
+				</li>
+
+				<!-- Item 6 -->
+				<li>
+					<div id="div3" class="direction-l l-div">
+						<div class="flag-wrapper">
+							<span class="flag">0.6</span>	
+						</div>
+						<div class="desc">Road accident severity measured by the number of persons killed per 100 accidents, has seen an increase of <b>0.6 percentage</b> points in 2018 over the previous year. The country has about one percent of the global vehicle population but it accounted for six percent of the world's road traffic accidents.</div>
+					</div>
+				</li>
+
+				<!-- Item 7 -->
+				<li>
+					<div id="div1" class="direction-r r-div">
+						<div class="flag-wrapper">
+							<span class="flag">11</span>
+						</div>
+						<div class="desc">India, ranks 1st in the number of road accident deaths across the 199 countries reported in the World Road Statistics, 2018 followed by China and US. As per the WHO Global Report on Road Safety 2018, India accounts for almost <b>11 percent</b> of the accident related deaths in the World.</div>
+					</div>
+				</li>
+			  
+				<!-- Item 8 -->
+				<li>
+					<div id="div2" class="direction-l l-div">
+						<div class="flag-wrapper">
+							<span class="flag">4,67,044</span>	
+						</div>
+						<div class="desc">A total of <b>4,67,044</b> road accidents have been reported by States and Union Territories (UTs) in the calendar year 2018, claiming 1,51,417 lives and causing injuries to 4,69,418 persons</div>
+					</div>
+				</li>
+
+				
+				<div style="padding: 20px;">
+				  	<a href="{{ url_for('static', filename='test1.html') }}">
+	  					<span>Let's Start</span>
+	  					<div class="liquid"></div>
+	  				</a>
+  				</div>
+			</ul>
+			
+      
+	  
+  </section>
+  
+  </div>
+	
+</body>
+</html>
