@@ -36,4 +36,24 @@ So, type in the same port number in that case as:
   
 After all these steps have been completed successfully, you will see a web page opening up in the browser. Now you are free to explore the system.
 
+## Working Details: 
+
+The basic thing about drowsiness detection is pretty simple. We first detect a face using dlib's frontal face detector. Once the face is detected , we try to detect the facial landmarks in the face using the dlib's landmark predictor. Ofcourse, we don't need all the landmarks, here we need to extract only the eye and the mouth region. 
+
+Now, after extraxting the landmarks we calculate the <b>Eye Aspect Ratio (EAR)</b> as: 
+
+```python 
+def eye_aspect_ratio(eye):
+	# Vertical eye landmarks
+	A = dist.euclidean(eye[1], eye[5])
+	B = dist.euclidean(eye[2], eye[4])
+	# Horizontal eye landmarks 
+	C = dist.euclidean(eye[0], eye[3])
+
+	# The EAR Equation 
+	EAR = (A + B) / (2.0 * C)
+	return EAR
+```
+The eye region is marked my 6 coordinates. These coordinates can be used to find whether the eye is open or closed if the value of EAR is checked with a certain threshold value. 
+![blink_detection_plot](https://user-images.githubusercontent.com/35571958/87878670-62d41400-ca03-11ea-8b96-fc4344c61a21.jpg)
 
