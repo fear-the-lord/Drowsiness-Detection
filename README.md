@@ -54,6 +54,6 @@ def eye_aspect_ratio(eye):
 	EAR = (A + B) / (2.0 * C)
 	return EAR
 ```
-The eye region is marked my 6 coordinates. These coordinates can be used to find whether the eye is open or closed if the value of EAR is checked with a certain threshold value. 
+The eye region is marked my 6 coordinates. These coordinates can be used to find whether the eye is open or closed if the value of EAR is checked with a certain threshold value.<br>
 ![blink_detection_plot](https://user-images.githubusercontent.com/35571958/87878670-62d41400-ca03-11ea-8b96-fc4344c61a21.jpg)
 
