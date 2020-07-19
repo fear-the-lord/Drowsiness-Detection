@@ -2,7 +2,37 @@
 <img src="https://img.shields.io/github/repo-size/fear-the-lord/Drowsiness-Detection"> <img src="https://img.shields.io/github/license/fear-the-lord/Drowsiness-Detection"> <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/fear-the-lord/Drowsiness-Detection"> <img alt="Libraries.io dependency status for GitHub repo" src="https://img.shields.io/librariesio/github/fear-the-lord/Drowsiness-Detection">
 
 ## Motivation: 
-According to the National Highway Traffic Safety Administration, every year about 100,000 police-reported crashes involve drowsy driving. These crashes result in more than 1,550 fatalities and 71,000 injuries. The real number may be much higher, however, as it is difficult to determine whether a driver was drowsy at the time of a crash. So, we tried to build a system, that detects whether a person is drowsy and alert him. 
+According to the National Highway Traffic Safety Administration, every year about 100,000 police-reported crashes involve drowsy driving. These crashes result in more than 1,550 fatalities and 71,000 injuries. The real number may be much higher, however, as it is difficult to determine whether a driver was drowsy at the time of a crash. So, we tried to build a system, that detects whether a person is drowsy and alert him.
+
+## Installing and Configuring Dlib:
+We need to create an enivronment in order to install dlib, as it cannot be directly installed using pip. So, follow this commands in order to install dlib into your system if you haven't installed it previously. Make sure you have Anaconda installed, as we will be doing everyting in Anaconda Prompt. 
+### Step 1: Update conda 
+```bash
+conda update conda
+```
+### Step 2: Update anaconda 
+```bash
+conda update anaconda 
+```
+### Step 3: Create a virtual environment
+```bash 
+conda create -n env_dlib 
+```
+### Step 4: Activate the virtual environment 
+```bash 
+conda activate env_dlib
+```
+### Step 5: Install dlib 
+```bash 
+conda install -c conda-forge dlib 
+```
+If all these steps are completed successfully, then dlib will be installed in the virtual environment <b>env_dlib</b>. Make sure to use this environment to run the entire project. 
+
+### Step to deactivate the virtual environment 
+```bash 
+conda deactivate 
+```
+
 ## Running the system: 
 
 ### Step 1: 
@@ -38,7 +68,7 @@ After all these steps have been completed successfully, you will see a web page 
 
 ## Working Details: 
 
-The basic thing about drowsiness detection is pretty simple. We first detect a face using dlib's frontal face detector. Once the face is detected , we try to detect the facial landmarks in the face using the dlib's landmark predictor. Ofcourse, we don't need all the landmarks, here we need to extract only the eye and the mouth region. 
+The basic thing about drowsiness detection is pretty simple. We first detect a face using dlib's frontal face detector. Once the face is detected , we try to detect the facial landmarks in the face using the dlib's landmark predictor. The landmark predictor returns 68 (x, y) coordinates representing different regions of the face, namely - mouth, left eyebrow, right eyebrow, right eye, left eye, nose and jaw. Ofcourse, we don't need all the landmarks, here we need to extract only the eye and the mouth region. 
 
 Now, after extraxting the landmarks we calculate the <b>Eye Aspect Ratio (EAR)</b> as: 
 
@@ -67,5 +97,5 @@ def mouth_aspect_ratio(mouth):
 	MAR = (A + B + C) / 3.0
 	return MAR
 ```
-<b>Note: Learn more about dlib</b> <a href = "http://dlib.net/">here</a>
+<b>Note: Learn more about dlib</b> <a href = "http://dlib.net/">here.</a>
 
