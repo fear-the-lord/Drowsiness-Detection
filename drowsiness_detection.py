@@ -9,6 +9,14 @@ import argparse
 import cv2 
 from playsound import playsound
 from scipy.spatial import distance as dist
+import os 
+from datetime import datetime
+
+# Creating the dataset 
+def assure_path_exists(path):
+    dir = os.path.dirname(path)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
 
 # Construct the argument parser and parse the arguments 
 ap = argparse.ArgumentParser() 
@@ -41,6 +49,11 @@ predictor = dlib.shape_predictor(args["shape_predictor"])
 print("[INFO]Loading Camera.....")
 vs = VideoStream(usePiCamera = args["picamera"] > 0).start()
 time.sleep(2) 
+
+assure_path_exists("dataset/")
+count_sleep = 0
+count_yawn = 0 
+
 
 # Now, loop over all the frames and detect the faces
 while True: 
@@ -95,6 +108,9 @@ while True:
 			cv2.drawContours(frame, [rightEyeHull], -1, (0, 0, 255), 1)
 
 			if FRAME_COUNT >= CONSECUTIVE_FRAMES: 
+				count_sleep += 1
+				# Add the frame to the dataset ar a proof of drowsy driving
+				cv2.imwrite("dataset/frame_sleep%d.jpg" % count_sleep, frame)
 				playsound('sound files/alarm.mp3')
 				cv2.putText(frame, "DROWSINESS ALERT!", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
 		else: 
@@ -105,8 +121,11 @@ while True:
 
 		# Check if the person is yawning
 		if MAR > MAR_THRESHOLD:
+			count_yawn += 1
 			cv2.drawContours(frame, [mouth], -1, (0, 0, 255), 1) 
 			cv2.putText(frame, "DROWSINESS ALERT!", (270, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 2)
+			# Add the frame to the dataset ar a proof of drowsy driving
+			cv2.imwrite("dataset/frame_yawn%d.jpg" % count_yawn, frame)
 			playsound('sound files/alarm.mp3')
 			playsound('sound files/warning_yawn.mp3')
 			
