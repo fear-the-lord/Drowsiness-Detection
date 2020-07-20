@@ -109,4 +109,7 @@ The outputs of the working system detecting drowsiness is shown as: <br>
 Also, in order to keep a proof of the moment when the person was sleeping or yawning, we kept a seperate folder where those frames are stored as: <br>
 ![Screenshot (408)](https://user-images.githubusercontent.com/35571958/87904688-7e2f3580-ca7c-11ea-839b-c049bace332f.png)
 
+### Future Scope: 
+We are looking to convert this into an android app which will be more portable and easily accessible. Also we faced some issues while hosting this in heroku. Any leads on these will be extremely helpful. 
+
 
