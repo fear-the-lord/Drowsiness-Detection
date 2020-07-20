@@ -103,10 +103,10 @@ def mouth_aspect_ratio(mouth):
 The GUI has been created using basic HTML, CSS and JavaScript and we have used Flask to render the python code into the website. Tkinter has also been used in order to make things simpler. It has 2 buttons: Run and Exit. The GUI looks like: 
 ![df01ae7c-afc9-4676-b95b-b6cec592ddf0 (online-video-cutter com) (1)](https://user-images.githubusercontent.com/35571958/87902089-589f2d80-ca76-11ea-9eda-a53a83662721.gif)
 
-The outputs of the working system detecting drowsiness is shown as: 
+The outputs of the working system detecting drowsiness is shown as: <br>
 ![frame_yawn1](https://user-images.githubusercontent.com/35571958/87904322-ab2f1880-ca7b-11ea-97d2-82f9dd0c318a.jpg) ![Screenshot (405)](https://user-images.githubusercontent.com/35571958/87904406-dd407a80-ca7b-11ea-982d-1852e2228765.png)
 
-Also, in order to keep a proof of the moment when the person was sleeping or yawning, we kept a seperate folder where those frames are stored as: 
+Also, in order to keep a proof of the moment when the person was sleeping or yawning, we kept a seperate folder where those frames are stored as: <br>
 ![Screenshot (408)](https://user-images.githubusercontent.com/35571958/87904688-7e2f3580-ca7c-11ea-839b-c049bace332f.png)
 
 
