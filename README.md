@@ -112,5 +112,5 @@ Also, in order to keep a proof of the moment when the person was sleeping or yaw
 
 ### Future Scope: 
 We are looking to convert this into an Android App which will be more portable and easily accessible. Also, we faced some issues while hosting this on Heroku. Any leads on these will be extremely helpful. 
-
+ 
 
