@@ -8,7 +8,6 @@ from imutils.video import VideoStream
 import matplotlib.pyplot as plt
 import matplotlib.animation as animate
 from matplotlib import style 
-
 import imutils 
 import dlib
 import time 
@@ -174,11 +173,7 @@ c = total_ts
 
 df = pd.DataFrame({"EAR" : a, "MAR":b,"TIME" : c})
 df.to_csv("op_webcam.csv", index=False)
-df=pd.read_csv("op.csv")
-
-
-
-
+df=pd.read_csv("op_webcam.csv")
 
 df.plot(x='TIME',y=['EAR','MAR'])
 #plt.xticks(rotation=45, ha='right')

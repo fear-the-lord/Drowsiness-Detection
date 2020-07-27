@@ -33,7 +33,7 @@ total_mar=[]
 ts=[]
 total_ts=[]
 
-url = "http://192.168.0.102:8080/shot.jpg"
+url = "http://192.168.137.166:8080/shot.jpg"
 
 # Construct the argument parser and parse the arguments 
 ap = argparse.ArgumentParser() 
@@ -44,7 +44,7 @@ args = vars(ap.parse_args())
 # Declare a constant which will work as the threshold for EAR value, below which it will be regared as a blink 
 EAR_THRESHOLD = 0.3
 # Declare another costant to hold the consecutive number of frames to consider for a blink 
-CONSECUTIVE_FRAMES = 20 
+CONSECUTIVE_FRAMES = 15 
 # Another constant which will work as a threshold for MAR value
 MAR_THRESHOLD = 14
 
@@ -80,8 +80,8 @@ while True:
 	img_resp = requests.get(url)
 	img_arr = np.array(bytearray(img_resp.content), dtype = np.uint8)
 	frame = cv2.imdecode(img_arr, -1)
-	frame = imutils.resize(frame, width = 800)
-	#frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
+	frame = imutils.resize(frame, width = 875)
+	frame = cv2.rotate(frame, cv2.ROTATE_90_CLOCKWISE)
 	cv2.putText(frame, "PRESS 'q' TO EXIT", (10, 30), cv2.FONT_HERSHEY_SIMPLEX, 0.7, (0, 0, 255), 3) 
 
 	gray = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
