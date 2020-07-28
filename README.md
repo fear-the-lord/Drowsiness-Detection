@@ -114,6 +114,12 @@ Also, in order to keep a proof of the moment when the person was sleeping or yaw
 We have used and Android App available for free in Play Store, named IP Webcam. It can be downloaded from this <a href = "https://play.google.com/store/apps/details?id=com.pas.webcam&hl=en_IN">link</a>. After downloading it, open the app and scroll down to the option <b>Start Server</b>. It will look like: <br>
 <img src = "https://user-images.githubusercontent.com/35571958/88623867-83673280-d0c3-11ea-9efd-63559024c0bd.jpg">
 
+After starting the server, an IP will be displayed on the screen. Open the file <b>android_cam.py</b>. In <b>line 36</b> put the given IP. 
+```python
+url = "http://<YOUR_IP_HERE>/shot.jpg"
+```
+<b>Also, make sure that the phone and PC/Laptop is connected to the same internet connections.</b>
+
 ### Future Scope: 
 We are looking to convert this into an Android App which will be more portable and easily accessible. Also, we faced some issues while hosting this on Heroku. Any leads on these will be extremely helpful. 
  
