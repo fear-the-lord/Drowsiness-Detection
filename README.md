@@ -126,6 +126,9 @@ Then, run the system in the same way as mentioned above. Click on the <b>Run Usi
 Also, in order to toggle between the front and back camera, type the IP upto "http://<YOUR_IP_HERE>" in the search bar of yor browser and explore the page which will look like this: <br>
 <img src = "https://user-images.githubusercontent.com/35571958/88626505-5f5a2000-d0c8-11ea-88f0-e1d4481eb9d9.png">
 
+Also, we have tried plotting the MAR and EAR graph Vs. Time in order to make the working clearer to the audience. The graph looks like: <br> 
+<img src = "https://user-images.githubusercontent.com/35571958/88627012-42721c80-d0c9-11ea-860a-51b7a1f2961b.png">
+
 ### Future Scope: 
 We are looking to convert this into an Android App which will be more portable and easily accessible. Also, we faced some issues while hosting this on Heroku. Any leads on these will be extremely helpful. 
  
