@@ -118,7 +118,10 @@ After starting the server, an IP will be displayed on the screen. Open the file 
 ```python
 url = "http://<YOUR_IP_HERE>/shot.jpg"
 ```
-<b>Also, make sure that the phone and PC/Laptop is connected to the same internet connections.</b>
+<b>Also, make sure that the phone and PC/Laptop is connected to the same internet connection.</b>
+
+Then, run the system in the same way as mentioned above. Click on the Run Using Phone Cam button to see the results:<br> 
+<img src = "https://user-images.githubusercontent.com/35571958/88624933-7b0ff700-d0c5-11ea-87da-3f6bf1516cc3.png">
 
 ### Future Scope: 
 We are looking to convert this into an Android App which will be more portable and easily accessible. Also, we faced some issues while hosting this on Heroku. Any leads on these will be extremely helpful. 
