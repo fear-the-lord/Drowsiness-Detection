@@ -131,5 +131,3 @@ Also, we have tried plotting the MAR and EAR graph Vs. Time in order to make the
 
 ### Future Scope: 
 We are looking to convert this into an Android App which will be more portable and easily accessible. Also, we faced some issues while hosting this on Heroku. Any leads on these will be extremely helpful. 
- 
-
