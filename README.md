@@ -120,8 +120,11 @@ url = "http://<YOUR_IP_HERE>/shot.jpg"
 ```
 <b>Also, make sure that the phone and PC/Laptop is connected to the same internet connection.</b>
 
-Then, run the system in the same way as mentioned above. Click on the Run Using Phone Cam button to see the results:<br> 
+Then, run the system in the same way as mentioned above. Click on the <b>Run Using Phone Cam</b> button to see the results:<br> 
 <img src = "https://user-images.githubusercontent.com/35571958/88624933-7b0ff700-d0c5-11ea-87da-3f6bf1516cc3.png">
+
+Also, in order to toggle between the front and back camera, type the IP upto "http://<YOUR_IP_HERE>" in the search bar of yor browser and explore the page which will look like this: <br>
+<img src = "https://user-images.githubusercontent.com/35571958/88626505-5f5a2000-d0c8-11ea-88f0-e1d4481eb9d9.png">
 
 ### Future Scope: 
 We are looking to convert this into an Android App which will be more portable and easily accessible. Also, we faced some issues while hosting this on Heroku. Any leads on these will be extremely helpful. 
