@@ -136,5 +136,5 @@ We are looking to convert this into an Android App which will be more portable a
 ### References: 
 [1]Facial landmarks with dlib, OpenCV and Python: https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/ <br>
 [2]Eye blink detection with OpenCV, Python, and dlib: https://www.pyimagesearch.com/2017/04/24/eye-blink-detection-opencv-python-dlib/ <br>
-[3]Drowsiness Detection with OpenCV https://www.pyimagesearch.com/2017/05/08/drowsiness-detection-opencv/ <br>
+[3]Drowsiness Detection with OpenCV: https://www.pyimagesearch.com/2017/05/08/drowsiness-detection-opencv/ <br>
 [4]Real-Time Eye Blink Detection using Facial Landmarks: http://vision.fe.uni-lj.si/cvww2016/proceedings/papers/05.pdf
