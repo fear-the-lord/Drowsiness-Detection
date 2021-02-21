@@ -130,7 +130,7 @@ Also, we have tried plotting the MAR and EAR graph Vs. Time in order to make the
 <img src = "https://user-images.githubusercontent.com/35571958/88627012-42721c80-d0c9-11ea-860a-51b7a1f2961b.png">
 
 
-### Future Scope: 
+### Future Scope:  
 Any leads on hosting this Flask App will be useful.
 
 ### References: 
