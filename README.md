@@ -118,7 +118,7 @@ After starting the server, an IP will be displayed on the screen. Open the file 
 ```python
 url = "http://<YOUR_IP_HERE>/shot.jpg"
 ```
-<b>Also, make sure that the phone and PC/Laptop is connected to the same internet connection.</b>
+<b>Also, make sure that the phone and PC/Laptop is connected to the same network.</b>
 
 Then, run the system in the same way as mentioned above. Click on the <b>Run Using Phone Cam</b> button to see the results:<br> 
 <img src = "https://user-images.githubusercontent.com/35571958/88624933-7b0ff700-d0c5-11ea-87da-3f6bf1516cc3.png">
