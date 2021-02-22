@@ -100,7 +100,7 @@ def mouth_aspect_ratio(mouth):
 ```
 <b>Note: Learn more about dlib</b> <a href = "http://dlib.net/">here.</a>
 
-### Results: 
+## Results: 
 The GUI has been created using basic HTML, CSS and JavaScript and we have used Flask to render the python code into the website. Tkinter has also been used in order to make things simpler. It has 2 buttons: Run and Exit. The GUI looks like: 
 ![df01ae7c-afc9-4676-b95b-b6cec592ddf0 (online-video-cutter com) (1)](https://user-images.githubusercontent.com/35571958/87902089-589f2d80-ca76-11ea-9eda-a53a83662721.gif)
 
@@ -130,10 +130,10 @@ Also, we have tried plotting the MAR and EAR graph Vs. Time in order to make the
 <img src = "https://user-images.githubusercontent.com/35571958/88627012-42721c80-d0c9-11ea-860a-51b7a1f2961b.png">
 
 
-### Future Scope:  
+## Future Scope:  
 Any leads on hosting this Flask App will be useful.
 
-### References: 
+## References: 
 [1]Facial landmarks with dlib, OpenCV and Python: https://www.pyimagesearch.com/2017/04/03/facial-landmarks-dlib-opencv-python/ <br>
 [2]Eye blink detection with OpenCV, Python, and dlib: https://www.pyimagesearch.com/2017/04/24/eye-blink-detection-opencv-python-dlib/ <br>
 [3]Drowsiness Detection with OpenCV: https://www.pyimagesearch.com/2017/05/08/drowsiness-detection-opencv/ <br>
