@@ -32,6 +32,6 @@ scipy==1.5.1
 six==1.15.0
 tkinterhtml==0.7
 urllib3==1.25.10
-Werkzeug==1.0.1
+Werkzeug==2.2.3
 wincertstore==0.2
 zope.interface==5.1.0
