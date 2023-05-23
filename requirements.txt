@@ -27,7 +27,7 @@ PyScreeze==0.1.26
 python-dateutil==2.8.1
 PyTweening==1.0.3
 pytz==2020.1
-requests==2.24.0
+requests==2.31.0
 scipy==1.5.1
 six==1.15.0
 tkinterhtml==0.7
